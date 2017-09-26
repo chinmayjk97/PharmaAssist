@@ -1,0 +1,101 @@
+<html>
+  <head>
+    <!-- Material Design Lite -->
+    <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+    <!-- Material Design icon font -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="PharmaAssist helps you to fetch eBooks, University Question papers, Videos, Syllabus and even Exam Timetable. It is developed by Chinmay Kulkarni.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+	<style>
+	.demo-list-three {
+	width: 85%;
+	}
+	
+	body {
+	padding: 20px;
+	background: #fafafa;
+	position: relative;
+	}	
+	
+	</style>
+	
+  </head>
+  <body>
+	<ul class="demo-list-three mdl-list" id = "unorderedlist">
+		
+	</ul>
+	
+	
+    
+<script>
+	var ul = document.getElementById("unorderedlist");
+
+
+    var requestURL = 'https://raw.githubusercontent.com/chinmayjk97/wallpaper-json/gh-pages/fiy_qpprs';
+    var request = new XMLHttpRequest();
+    request.open('GET', requestURL);
+    request.responseType = 'text';
+    request.send();
+
+    request.onload = function() {
+      var QPprsText = request.response;
+      var QPprs = JSON.parse(QPprsText);
+      showQPprs(QPprs);
+    }
+
+
+    function showQPprs(jsonObj) {
+      var qp = jsonObj['QPprs'];
+
+      for(var i = 0; i < qp.length; i++) {
+        var li = document.createElement('li');
+		li.className = "mdl-list__item mdl-list__item--three-line";
+		
+		var span = document.createElement('span');
+		span.className = "mdl-list__item-primary-content";
+		
+		var span1 = document.createElement('span');
+		
+		var span2 = document.createElement('span');
+		span2.className = "mdl-list__item-text-body";
+		
+		var span_right = document.createElement('span');
+		span_right.className = "mdl-list__item-secondary-content";
+		
+		
+        span1.textContent = qp[i].subject;
+		span2.textContent = 'Month & Year: ' + qp[i].month_year;
+		
+		var a = document.createElement("a");
+		a.href = qp[i].url;
+		a.target = "_blank";
+		
+		
+		var button = document.createElement('button');
+		button.className = 'mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent';
+		var download = document.createElement("i");
+		download.className = "material-icons";
+		download.textContent = "file_download";
+		button.appendChild(download);
+		componentHandler.upgradeElement(button);
+		
+		a.appendChild(button);
+		
+		
+		span.appendChild(span1);
+        span.appendChild(span2);
+		span_right.appendChild(a);
+		
+        li.appendChild(span);
+		li.appendChild(span_right);
+        
+        ul.appendChild(li);
+      }
+    }
+
+</script>
+  </body>
+</html>

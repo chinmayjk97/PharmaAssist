@@ -1,0 +1,71 @@
+<html>
+  <head>
+    <!-- Material Design Lite -->
+    <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+    <!-- Material Design icon font -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+		<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="PharmaAssist helps you to fetch eBooks, University Question papers, Videos, Syllabus and even Exam Timetable. It is developed by Chinmay Kulkarni.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <title>PharmaAssist</title>
+	<link rel="apple-touch-icon" sizes="180x180" href="https://pharmaknowledge.000webhostapp.com/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://pharmaknowledge.000webhostapp.com/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="https://pharmaknowledge.000webhostapp.com/android-chrome-192x192.png">
+<link rel="icon" type="image/png" sizes="16x16" href="https://pharmaknowledge.000webhostapp.com/favicon-16x16.png">
+<link rel="manifest" href="https://pharmaknowledge.000webhostapp.com/manifest.json">
+<link rel="mask-icon" href="https://pharmaknowledge.000webhostapp.com/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="apple-mobile-web-app-title" content="PharmaAssist">
+<meta name="application-name" content="PharmaAssist">
+<meta name="theme-color" content="#ffffff">
+
+	<style>
+
+body {
+	scrolling:no;
+	overflow:hidden;
+}
+
+iframe {
+	overflow:hidden;
+	scrolling:no;
+	position:absolute;
+    z-index:1;
+    top:0px;
+    left:0px;
+width:100%;
+}
+
+</style>
+
+  </head>
+  <body>
+    <!-- Simple header with fixed tabs. -->
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header
+                mdl-layout--fixed-tabs">
+      <header class="mdl-layout__header">
+        <div class="mdl-layout__header-row">
+          <!-- Title -->
+          <span class="mdl-layout-title">Final Year</span>
+        </div>
+        <!-- Tabs -->
+        <div class="mdl-layout__tab-bar mdl-js-ripple-effect">
+          <a href="#fixed-tab-1" class="mdl-layout__tab is-active">eBooks</a>
+          <a href="#fixed-tab-2" class="mdl-layout__tab">Question Papers</a>
+        </div>
+      </header>
+      <div class="mdl-layout__drawer">
+        <span class="mdl-layout-title">PharmaAssist</span>
+      </div>
+      <main class="mdl-layout__content">
+        <section class="mdl-layout__tab-panel is-active" id="fixed-tab-1">
+          <div class="page-content"><iframe src="https://pharmaknowledge.000webhostapp.com/app/fiy_ebooks.html" height="100%" width="100%" frameborder="0"/><!-- Your content goes here --></div>
+        </section>
+        <section class="mdl-layout__tab-panel" id="fixed-tab-2">
+          <div class="page-content"><iframe src="https://pharmaknowledge.000webhostapp.com/app/fiy_qpprs_new.html" height="100%" width="100%" frameborder="0"/><!-- Your content goes here --></div>
+        </section> 
+      </main>
+    </div>
+  </body>
+</html>
