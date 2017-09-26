@@ -43,4 +43,59 @@
     request.onload = function() {
       var BooksText = request.response;
       var Books = JSON.parse(BooksText);
-     
+      showBooks(Books);
+    }
+
+
+    function showBooks(jsonObj) {
+      var bk = jsonObj['Books'];
+
+      for(var i = 0; i < bk.length; i++) {
+        var li = document.createElement('li');
+		li.className = "mdl-list__item mdl-list__item--three-line";
+		
+		var span = document.createElement('span');
+		span.className = "mdl-list__item-primary-content";
+		
+		var span1 = document.createElement('span');
+		
+		var span2 = document.createElement('span');
+		span2.className = "mdl-list__item-text-body";
+		
+		var span_right = document.createElement('span');
+		span_right.className = "mdl-list__item-secondary-content";
+		
+		
+        span1.textContent = bk[i].book_name;
+		span2.textContent = bk[i].book_edition;
+		
+		var a = document.createElement("a");
+		a.href = bk[i].book_url;
+		a.target = "_blank";
+		
+		
+		var button = document.createElement('button');
+		button.className = 'mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent';
+		var download = document.createElement("i");
+		download.className = "material-icons";
+		download.textContent = "file_download";
+		button.appendChild(download);
+		componentHandler.upgradeElement(button);
+		
+		a.appendChild(button);
+		
+		
+		span.appendChild(span1);
+        span.appendChild(span2);
+		span_right.appendChild(a);
+		
+        li.appendChild(span);
+		li.appendChild(span_right);
+        
+        ul.appendChild(li);
+      }
+    }
+
+</script>
+  </body>
+</html>
