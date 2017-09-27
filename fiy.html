@@ -1,0 +1,223 @@
+<html>
+  <head>
+    <!-- Material Design Lite -->
+    <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+    <!-- Material Design icon font -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+		<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="PharmaAssist helps you to fetch eBooks, University Question papers, Videos, Syllabus and even Exam Timetable. It is developed by Chinmay Kulkarni.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <title>PharmaAssist</title>
+	<link rel="apple-touch-icon" sizes="180x180" href="https://pharmaknowledge.000webhostapp.com/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://pharmaknowledge.000webhostapp.com/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="https://pharmaknowledge.000webhostapp.com/android-chrome-192x192.png">
+<link rel="icon" type="image/png" sizes="16x16" href="https://pharmaknowledge.000webhostapp.com/favicon-16x16.png">
+<link rel="manifest" href="https://pharmaknowledge.000webhostapp.com/manifest.json">
+<link rel="mask-icon" href="https://pharmaknowledge.000webhostapp.com/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="apple-mobile-web-app-title" content="PharmaAssist">
+<meta name="application-name" content="PharmaAssist">
+<meta name="theme-color" content="#ffffff">
+
+	<style>
+
+	body {
+	scrolling:no;
+	overflow:hidden;
+	background: #fafafa;
+	position: relative;
+	}	
+
+	.demo-list-three {
+	width: 85%;
+	}
+	
+</style>
+
+  </head>
+  <body>
+  <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header
+                mdl-layout--fixed-tabs">
+      <header class="mdl-layout__header">
+        <div class="mdl-layout__header-row">
+          <!-- Title -->
+          <span class="mdl-layout-title">First Year</span>
+        </div>
+        <!-- Tabs -->
+        <div class="mdl-layout__tab-bar mdl-js-ripple-effect">
+          <a href="#fixed-tab-1" class="mdl-layout__tab is-active">eBooks</a>
+          <a href="#fixed-tab-2" class="mdl-layout__tab">Question Papers</a>
+        </div>
+      </header>
+      <div class="mdl-layout__drawer">
+        <span class="mdl-layout-title">PharmaAssist</span>
+<nav class="mdl-navigation">
+          <a class="mdl-navigation__link" href="https://pharmaknowledge.000webhostapp.com/app/fy.html">1st Year</a>
+          <a class="mdl-navigation__link" href="https://pharmaknowledge.000webhostapp.com/app/sy.html">2nd Year</a>
+          <a class="mdl-navigation__link" href="https://pharmaknowledge.000webhostapp.com/app/ty.html">3rd Year</a>
+          <a class="mdl-navigation__link" href="https://pharmaknowledge.000webhostapp.com/app/fiy.html">Final Year</a>
+        </nav>
+      </div>
+      <main class="mdl-layout__content">
+        <section class="mdl-layout__tab-panel is-active" id="fixed-tab-1">
+          <div class="page-content">
+		  
+			<ul class="demo-list-three mdl-list" id = "unorderedlistBooks">
+		
+			</ul>
+			
+		  </div>
+        </section>
+        <section class="mdl-layout__tab-panel" id="fixed-tab-2">
+          <div class="page-content">
+			<ul class="demo-list-three mdl-list" id = "unorderedlistQPrs">
+		
+			</ul>
+		  </div>
+        </section> 
+      </main>
+    </div>
+  <script>
+	var ulBooks = document.getElementById("unorderedlistBooks");
+
+
+    var requestURLBooks = 'https://raw.githubusercontent.com/chinmayjk97/wallpaper-json/gh-pages/fiy_books';
+    var requestBooks = new XMLHttpRequest();
+    requestBooks.open('GET', requestURLBooks);
+    requestBooks.responseType = 'text';
+    requestBooks.send();
+
+    requestBooks.onload = function() {
+      var BooksText = requestBooks.response;
+      var Books = JSON.parse(BooksText);
+      showBooks(Books);
+    }
+
+
+    function showBooks(jsonObj) {
+      var bk = jsonObj['Books'];
+
+      for(var i = 0; i < bk.length; i++) {
+        var li = document.createElement('li');
+		li.className = "mdl-list__item mdl-list__item--three-line";
+		
+		var span = document.createElement('span');
+		span.className = "mdl-list__item-primary-content";
+		
+		var span1 = document.createElement('span');
+		
+		var span2 = document.createElement('span');
+		span2.className = "mdl-list__item-text-body";
+
+		var span3 = document.createElement('span');
+		span3.className = "mdl-list__item-text-body";
+		
+		var span_right = document.createElement('span');
+		span_right.className = "mdl-list__item-secondary-content";
+		
+		
+        span1.textContent = bk[i].book_name;
+		span2.textContent = bk[i].book_edition ;
+		span3.textContent = bk[i].book_size ;
+		
+		var a = document.createElement("a");
+		a.href = bk[i].book_url;
+        a.target = "_blank";
+		
+		
+		var button = document.createElement('button');
+		button.className = 'mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent';
+		var download = document.createElement("i");
+		download.className = "material-icons";
+		download.textContent = "file_download";
+		button.appendChild(download);
+		componentHandler.upgradeElement(button);
+		
+		a.appendChild(button);
+		
+		span2.appendChild(span3);
+		span.appendChild(span1);
+        span.appendChild(span2);
+		span_right.appendChild(a);
+		
+        li.appendChild(span);
+		li.appendChild(span_right);
+        
+        ulBooks.appendChild(li);
+      }
+    }
+	
+	
+	<!-- Qpprs -->
+	var ulQPprs = document.getElementById("unorderedlistQPrs");
+
+
+    var requestURLQPprs = 'https://raw.githubusercontent.com/chinmayjk97/wallpaper-json/gh-pages/fiy_qpprs';
+    var requestQPpr = new XMLHttpRequest();
+    requestQPpr.open('GET', requestURLQPprs);
+    requestQPpr.responseType = 'text';
+    requestQPpr.send();
+
+    requestQPpr.onload = function() {
+      var QPprsText = requestQPpr.response;
+      var QPprs = JSON.parse(QPprsText);
+      showQPprs(QPprs);
+    }
+
+
+    function showQPprs(jsonObj) {
+      var qp = jsonObj['QPprs'];
+
+      for(var i = 0; i < qp.length; i++) {
+        var li = document.createElement('li');
+		li.className = "mdl-list__item mdl-list__item--three-line";
+		
+		var span = document.createElement('span');
+		span.className = "mdl-list__item-primary-content";
+		
+		var span1 = document.createElement('span');
+		
+		var span2 = document.createElement('span');
+		span2.className = "mdl-list__item-text-body";
+		
+		var span_right = document.createElement('span');
+		span_right.className = "mdl-list__item-secondary-content";
+		
+		
+        span1.textContent = qp[i].subject;
+		span2.textContent = 'Month & Year: ' + qp[i].month_year;
+		
+		var a = document.createElement("a");
+		a.href = qp[i].url;
+		a.target = "_blank";
+		
+		
+		var button = document.createElement('button');
+		button.className = 'mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent';
+		var download = document.createElement("i");
+		download.className = "material-icons";
+		download.textContent = "file_download";
+		button.appendChild(download);
+		componentHandler.upgradeElement(button);
+		
+		a.appendChild(button);
+		
+		
+		span.appendChild(span1);
+        span.appendChild(span2);
+		span_right.appendChild(a);
+		
+        li.appendChild(span);
+		li.appendChild(span_right);
+        
+        ulQPprs.appendChild(li);
+      }
+    }
+	
+	
+	
+
+</script>   
+  </body>
+</html>
