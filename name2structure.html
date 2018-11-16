@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+  <meta http-equiv='Content-Type' content='text/html; charset=utf-8' />
+  <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1' />
+  <title>Chemistry</title>
+  <link rel='stylesheet' type='text/css' href='Mol_styles.css' />
+</head>
+
+<script language="JavaScript">
+function getStructure() {
+var sn = encodeURIComponent(document.getElementById("sname").value);
+if (sn != "") {
+  document.getElementById("image1").src="http://n2s.openmolecules.org/?name="+sn;
+  }
+}
+function get3DStructure() {
+var sn = encodeURIComponent(document.getElementById("sname").value);
+if (sn != "") {
+  document.getElementById("image1").src="http://www.openmolecules.org/my/n2s/calculating.png";
+  document.getElementById("image3").src = "http://n2s.openmolecules.org/?name=3D-"+sn;
+  }
+}
+function imageLoaded() {
+  document.getElementById("image1").src=document.getElementById("image3").src;
+}
+</script>
+
+<style type="text/css"> div.centered {text-align: center} </style>
+
+<body class="page">
+<div id="wrapper" class="hfeed">
+
+  <div id="header">
+    <div id="branding" role="banner">
+      <div id="site-title">
+        <a href="index.html" title="https://chinmayjk97.github.io/PharmaAssist/download" rel="home">Pharma Knowledge</a>
+      </div>
+     
+      <script type="text/javascript">
+        var imagelist = new Array('http://www.openmolecules.org/images/header1.jpg','http://www.openmolecules.org/images/header2.jpg','http://www.openmolecules.org/images/header3.jpg','http://www.openmolecules.org/images/header4.jpg');
+        var imagesource = imagelist[Math.floor(Math.random() * imagelist.length)];
+        document.write("<img src=\""+imagesource+"\" width=\"100%\" height=\"106\"/>");
+      </script> 
+    </div>
+    
+
+  <div id="main">
+    <div id="container">
+      <div id="content" role="main">
+        <h1 class="entry-title">Name To Structure</h1>
+        <div class="entry-content">
+<p>
+This page lets you easily convert compound names, IUPAC names, SMILES codes and CAS numbers into chemical structures.
+On the back end it employs OpenChemLib to decode SMILES codes, the <a href="http://opsin.ch.cam.ac.uk/" target="_blank">OPSIN</a>
+library developed by Daniel Lowe, drug and natural product dictionaries,
+the <a href="http://cactus.nci.nih.gov/" target="_blank">CACTUS</a> online service provided by the National Cancer Institute,
+and <a href="http://www.openmolecules.org/" target="_blank">Openmolecules software</a>. 3D structure images are random low energy conformers rendered on-the-fly using the ray tracing engine SunFlow.
+
+<div class="centered">Substance name, IUPAC, CAS-No, Smiles: <input id="sname" type="text" size="36">
+<br>
+<button type="button" onclick="getStructure()">Get 2D-Structure</button>
+<button type="button" onclick="get3DStructure()">Get 3D-Structure</button>
+<br><br>
+<img id="image1" src="http://www.openmolecules.org/my/n2s/emptyStructure.png">
+<br>
+<img id="image3" src="#" style="display:none" onload="imageLoaded()" />
+</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>
+
