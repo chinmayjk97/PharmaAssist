@@ -24,6 +24,28 @@ Link to privacy policy of third party service providers used by the app
 *   [Firebase Crashlytics](https://firebase.google.com/terms/crashlytics)
 *   [OneSignal](https://onesignal.com/privacy_policy)
 
+**Analytics & OneSignal**
+
+PharmaAssist Lite uses Google Firebase Analytics to collect app usage statitics and OneSignal for targetting and delivering notifications. We use this statistics to improve our app.
+
+**Which data is collected?**
+
+Firebase Analytics & OneSignal collects the following information by default:
+* Number of users and sessions
+* Session duration
+* Operating systems
+* Device models
+* Geography
+* First launches
+* App opens
+* App updates
+* In-app purchases
+* User's Email-ID
+
+**How is the data used?**
+
+The analytics data will be used to analyse the experience of each user to further improve their experience.
+
 **Log Data**
 
 We want to inform you that whenever you use our Service, in a case of an error in the app we collect data and information (through third party products) on your phone called Log Data. This Log Data may include information such as your device Internet Protocol (“IP”) address, device name, operating system version, the configuration of the app when utilizing our Service, the time and date of your use of the Service, and other statistics.
