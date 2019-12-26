@@ -18,9 +18,11 @@ Link to privacy policy of third party service providers used by the app
 
 *   [Google Play Services](https://www.google.com/policies/privacy/)
 *   [AdMob](https://support.google.com/admob/answer/6128543?hl=en)
+*   [AdMob Alternate](https://policies.google.com/privacy?hl=en)
 *   [Firebase Analytics](https://firebase.google.com/policies/analytics)
 *   [Fabric](https://fabric.io/privacy)
-*   [Crashlytics](http://try.crashlytics.com/terms/privacy-policy.pdf)
+*   [Firebase Crashlytics](https://firebase.google.com/terms/crashlytics)
+*   [OneSignal](https://onesignal.com/privacy_policy)
 
 **Log Data**
 
